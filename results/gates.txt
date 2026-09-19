@@ -1,0 +1,53 @@
+A. Prop. B.1 -- invariance to the serving split
+  PASS  split at  1: next-token logits agree  max|d|=1.11e-16
+  PASS  split at  1: distributions agree  max|dp|=1.39e-17
+  PASS  split at  4: next-token logits agree  max|d|=1.11e-16
+  PASS  split at  4: distributions agree  max|dp|=1.39e-17
+  PASS  split at  7: next-token logits agree  max|d|=1.11e-16
+  PASS  split at  7: distributions agree  max|dp|=1.39e-17
+  PASS  split at 10: next-token logits agree  max|d|=1.11e-16
+  PASS  split at 10: distributions agree  max|dp|=1.39e-17
+  PASS  final recurrent state s_T identical  max|ds|=1.39e-17
+  PASS  every decoder SWA cache identical  
+
+B. Prop. G.1 -- causality
+  PASS  perturbing token j leaves all logits < j bit-identical  max|d|=0.000e+00
+  PASS  and it DOES change logits >= j (test is not vacuous)  min move=6.44e-01
+  PASS  autograd: d(logits_t)/d(e_j) == 0 for j > t  0.000e+00
+  PASS  autograd: d(logits_t)/d(e_j) != 0 for j <= t  8.641e+00
+
+C. Sec. 2.5 -- the sliding-window rule
+  PASS  W=1: cache retains min(T, W-1) = 0 entries  got 0
+  PASS  W=2: cache retains min(T, W-1) = 1 entries  got 1
+  PASS  W=4: cache retains min(T, W-1) = 3 entries  got 3
+  PASS  W=8: cache retains min(T, W-1) = 7 entries  got 7
+  PASS  W=1 retains nothing (paper: "this set is empty for W = 1")  
+
+D. App. G/H -- gradient paths through the two halves of H_t = (s_t, C^D_t)
+   |d loss_T / d s_star| : full=6.743e-05  detach s=7.289e-05  detach KV=2.290e-05  detach both=0.000e+00
+  PASS  full BPTT: s_star reaches a loss 5 tokens past the boundary  
+  PASS  detaching s_t ALONE does not cut it -- the path survives through decoder KV  7.289e-05
+  PASS  detaching decoder KV ALONE does not cut it -- the path survives through s_t  2.290e-05
+  PASS  detaching BOTH cuts the recurrence EXACTLY (Eq. H.1)  0.000e+00
+  PASS  the two partial detaches differ from full BPTT and from each other  
+
+E. App. I.1 -- RLT-2 with B=1 equals RLT-1, vs a NAIVE reference
+  PASS  W=2: chunked B=1 == naive token-at-a-time reference  max|d|=0.00e+00
+  PASS  W=4: chunked B=1 == naive token-at-a-time reference  max|d|=0.00e+00
+  PASS  W=8: chunked B=1 == naive token-at-a-time reference  max|d|=0.00e+00
+  PASS  W=32: chunked B=1 == naive token-at-a-time reference  max|d|=0.00e+00
+   and RLT-2 at B>1 is a genuinely different model:
+  PASS  B= 2: position 0 identical to RLT-1  0.0e+00
+  PASS  B= 2: later positions differ (state is held across the chunk)  1.3e-01
+  PASS  B= 4: position 0 identical to RLT-1  0.0e+00
+  PASS  B= 4: later positions differ (state is held across the chunk)  1.5e-01
+  PASS  B= 8: position 0 identical to RLT-1  0.0e+00
+  PASS  B= 8: later positions differ (state is held across the chunk)  1.6e-01
+  PASS  B=64: position 0 identical to RLT-1  0.0e+00
+  PASS  B=64: later positions differ (state is held across the chunk)  1.6e-01
+
+F. App. B.3 -- recurrent path length
+  PASS  d s_T / d s_star is nonzero after T=11 tokens  |grad|=2.7623e-05
+   the path from s_star to s_T traverses T*L_D = 11*2 = 22 decoder blocks, while each token evaluates L_E+L_D = 4
+
+ALL GATES PASSED

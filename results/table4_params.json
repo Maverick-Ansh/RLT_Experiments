@@ -1,0 +1,50 @@
+[
+ {
+  "model": "rlt1_4+4",
+  "ours": 28724224,
+  "ours_M": 28.7242,
+  "paper_M": 28.73,
+  "delta_M": -0.0058,
+  "exact": false
+ },
+ {
+  "model": "rlt1_5+3",
+  "ours": 28199424,
+  "ours_M": 28.1994,
+  "paper_M": 28.2,
+  "delta_M": -0.0006,
+  "exact": true
+ },
+ {
+  "model": "rlt1_6+2",
+  "ours": 27674624,
+  "ours_M": 27.6746,
+  "paper_M": 27.68,
+  "delta_M": -0.0054,
+  "exact": false
+ },
+ {
+  "model": "rlt1_7+1",
+  "ours": 27149824,
+  "ours_M": 27.1498,
+  "paper_M": 27.15,
+  "delta_M": -0.0002,
+  "exact": true
+ },
+ {
+  "model": "rlt1_8+0",
+  "ours": 26100224,
+  "ours_M": 26.1002,
+  "paper_M": 26.1,
+  "delta_M": 0.0002,
+  "exact": true
+ },
+ {
+  "model": "gpt_8",
+  "ours": 25312256,
+  "ours_M": 25.3123,
+  "paper_M": 25.31,
+  "delta_M": 0.0023,
+  "exact": true
+ }
+]

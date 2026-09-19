@@ -1,0 +1,50 @@
+[
+ {
+  "task": "addition",
+  "uniform": 9.090909090909092,
+  "majority": 14.377983712440326,
+  "untrained": 0.05672149744753262,
+  "metric": "answer-token",
+  "n_classes": 11
+ },
+ {
+  "task": "parity",
+  "uniform": 50.0,
+  "majority": 53.61328125,
+  "untrained": 0.0,
+  "metric": "final-label",
+  "n_classes": 2
+ },
+ {
+  "task": "mod5_flat",
+  "uniform": 20.0,
+  "majority": 20.703125,
+  "untrained": 0.0,
+  "metric": "final-label",
+  "n_classes": 5
+ },
+ {
+  "task": "mod5_brackets",
+  "uniform": 20.0,
+  "majority": 26.46484375,
+  "untrained": 0.0,
+  "metric": "final-label",
+  "n_classes": 5
+ },
+ {
+  "task": "s5_swaps",
+  "uniform": 0.8333333333333334,
+  "majority": 1.3824462890625,
+  "untrained": 0.59814453125,
+  "metric": "prefix-token",
+  "n_classes": 120
+ },
+ {
+  "task": "s5_standard",
+  "uniform": 0.8333333333333334,
+  "majority": 0.9552001953125,
+  "untrained": 0.537109375,
+  "metric": "prefix-token",
+  "n_classes": 120
+ }
+]

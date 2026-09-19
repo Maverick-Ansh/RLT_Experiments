@@ -1,0 +1,44 @@
+{
+ "exact_replay_max_log_ratio": 0.0,
+ "no_grad_prompt": {
+  "cosine": 0.9944106635416157,
+  "rel_l2": 0.10690358731396751,
+  "forward_max_diff": 0.0
+ },
+ "detach_rows": [
+  {
+   "detach": "s",
+   "cosine": 0.9968270107704882,
+   "rel_l2": 0.08126954090702711,
+   "forward_max_diff": 0.0
+  },
+  {
+   "detach": "kv",
+   "cosine": 0.9973441183443255,
+   "rel_l2": 0.0728336354704598,
+   "forward_max_diff": 0.0
+  },
+  {
+   "detach": "enc_mem",
+   "cosine": 0.8687235458026412,
+   "rel_l2": 0.49545014638151436,
+   "forward_max_diff": 0.0
+  },
+  {
+   "detach": "s+kv",
+   "cosine": 0.9944106635416157,
+   "rel_l2": 0.10690358731396751,
+   "forward_max_diff": 0.0
+  },
+  {
+   "detach": "s+kv+enc_mem",
+   "cosine": 0.8668861869092059,
+   "rel_l2": 0.4985077949343009,
+   "forward_max_diff": 0.0
+  }
+ ],
+ "support_violations_untruncated": 0,
+ "support_violations_top-k=8": 360,
+ "support_violations_top-k=3": 480,
+ "support_violations_top-k=1": 528
+}

@@ -1,0 +1,6 @@
+# checkpoints (854 MB) and cached datasets are regenerable: every run is seeded
+*.pt
+data/
+__pycache__/
+*.pyc
+logs/*.log
